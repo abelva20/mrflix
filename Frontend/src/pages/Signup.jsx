@@ -1,0 +1,129 @@
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { Authcontainer } from '../pages/store/AuthUser.js';
+function Signup() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+
+  const { signup } = Authcontainer();
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    signup({
+      email, password, username
+    });
+  }
+
+  return (
+    <>
+    <div className="w-full h-screen signup-bg md:h-full xl:h-screen">
+      <header className="max-w-6xl mx-auto flex items-center justify-between">
+        <Link to={"/"}>
+        <h1 className='my-8 text-blue-400 text-4xl mx-2 font-serif'>
+          MrFlix
+        </h1>
+        </Link>
+      </header>
+      <div className='flex justify-center items-center mt-6 mx-2'>
+        <div className='max-w-md w-full bg-white rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10'>
+          <h1 className='text-center font-medium text-2xl my-4'>
+            Sign Up
+          </h1>
+          <form className='space-y-1 mx-4' onSubmit={handleSignup}>
+            <div>
+              <label htmlFor='username' className='text-xl font-semibold block'>
+                Username
+                <input
+                  type='text'
+                  className='w-full px-3 py-2 mt-1 mb-2 bg-white/50 rounded-md focus:outline-none focus:ring-blue-600'
+                  placeholder='Enter your Username'
+                  id='username'
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor='email' className='text-xl font-semibold block'>
+                Email
+                <input
+                  type='email'
+                  className='w-full px-3 py-2 mt-1 mb-2 bg-white/50 rounded-md focus:outline-none focus:ring-blue-600'
+                  placeholder='Enter your email'
+                  id='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </label>
+            </div>
+            <div>
+              <label htmlFor='password' className='text-xl font-semibold block'>
+                Password
+                <input
+                  type='password'
+                  className='w-full px-3 py-2 mt-1 mb-2 bg-white/50 rounded-md focus:outline-none focus:ring-blue-600'
+                  placeholder='Enter your Password'
+                  id='password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </label>
+            </div>
+            <button className='w-full bg-blue-400 text-white/80 font-semibold font-sans rounded-md py-2'>
+              Sign Up
+            </button>
+          </form>
+          <div className='text-center text-gray-800 mt-5'>
+            alredy have an account? {" "}
+            <Link to={'/Login'} className = 'hover:underline hover:text-blue-800'>
+              Sign In
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main className='flex justify-center items-center'>
+        <div className='w-full flex justify-center items-center mt-32 flex-wrap mx-10'>
+          <div className='w-1/2 px-10'>
+            <h1 className='text-4xl font-bold text-center'>
+              Anime
+            </h1>
+            <p className='text-gray-700 text-center text-2xl font-serif font-medium'>
+              Watch Anime movies and Anime Series for free
+            </p>
+            <h2 className='text-gray-700 text-center text-2xl font-serif font-medium mt-6'>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus maxime quidem aspernatur, vero exercitationem ad vitae voluptates nisi aut accusantium?
+            </h2>
+          </div>
+          <div className='w-1/2'>
+          <img src='404BG.jpg' alt='hero' className='object-cover' />
+          </div>
+        </div>
+
+    </main>
+
+    <main className='flex justify-center items-center mb-10'>
+        <div className='w-full flex justify-center items-center mt-32 flex-wrap mx-10'>
+          <div className='w-1/2'>
+          <img src='Hollywood.jpg' alt='hero' className='object-cover' />
+          </div>
+          <div className='w-1/2 px-10'>
+            <h1 className='text-4xl font-bold text-center'>
+              Hollywood
+            </h1>
+            <p className='text-gray-700 text-center text-2xl font-serif font-medium'>
+              Watch Hollywood movies and Tv Shows
+            </p>
+            <h2 className='text-gray-700 text-center text-2xl font-serif font-medium mt-6'>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus maxime quidem aspernatur, vero exercitationem ad vitae voluptates nisi aut accusantium?
+            </h2>
+          </div>
+        </div>
+    </main>
+    </>
+  )
+}
+
+export default Signup

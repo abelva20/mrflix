@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.hero-bg {
+    background-image:linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.3)), url("Hero.jpg")
+}
+
+.error-bg {
+    background-image: url("404BG.jpg");
+}
+
+.signup-bg {
+    background-image:linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.1)), url("SignupBG.jpg");
+}
+
+
+.main {
+    background-color:linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.3)), ;
+}

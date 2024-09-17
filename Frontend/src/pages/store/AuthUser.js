@@ -8,14 +8,12 @@ export const Authcontainer = create((set) => ({
     isChecking: true,
     signup: async (credential) => {
         try {
-            const response = await axios.post("http://localhost:8080/api/users/signup/", credential);
-            set({user:response.data.user, isSignUp:false})
-            toast.success("signup successfully")
-
+            const billing = await axios.post("http://localhost:8080/api/users/signup", credential);
+            set({ user: billing.data.user, isSignUp:false });
+            toast.success("Create new user successfully");
         } catch (error) {
             const errorMessage = error.response?.data?.message || "An error occurred";
             toast.error(errorMessage);
-            set({isSignUp:false, user:null})
         }
     },
     login: async () => {},

@@ -20,7 +20,7 @@ export const middleware = async (req, res, next) => {
             });
         }
 
-        const users = await User.findOne(decoded.userId).select("-password")
+        const users = await User.findById(decoded.userId).select("-password")
 
         if(!users){
             res.status(401).json({

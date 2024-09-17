@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Authcontainer } from '../pages/store/AuthUser.js';
 function Signup() {
-  const [email, setEmail] = useState("");
+  const urlParams = new URLSearchParams(window.location.search);
+  const emailValue = urlParams.get('email');
+  const [email, setEmail] = useState(emailValue ||"");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
@@ -31,19 +33,7 @@ function Signup() {
             Sign Up
           </h1>
           <form className='space-y-1 mx-4' onSubmit={handleSignup}>
-            <div>
-              <label htmlFor='username' className='text-xl font-semibold block'>
-                Username
-                <input
-                  type='text'
-                  className='w-full px-3 py-2 mt-1 mb-2 bg-white/50 rounded-md focus:outline-none focus:ring-blue-600'
-                  placeholder='Enter your Username'
-                  id='username'
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </label>
-            </div>
+            
             <div>
               <label htmlFor='email' className='text-xl font-semibold block'>
                 Email
@@ -54,6 +44,20 @@ function Signup() {
                   id='email'
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                />
+              </label>
+            </div>
+
+            <div>
+              <label htmlFor='username' className='text-xl font-semibold block'>
+                Username
+                <input
+                  type='text'
+                  className='w-full px-3 py-2 mt-1 mb-2 bg-white/50 rounded-md focus:outline-none focus:ring-blue-600'
+                  placeholder='Enter your Username'
+                  id='username'
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </label>
             </div>

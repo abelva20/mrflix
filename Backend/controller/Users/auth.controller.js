@@ -43,31 +43,27 @@ export async function signup(req, res) {
                 message: "Username already exists"
             });
         }
+        const PROFILE_PIC = ["Backend/Asset/ben-sweet-2LowviVHZ-E-unsplash.jpg", "Backend/Asset/david-becker-crs2vlkSe98-unsplash.jpg", "Backend/Asset/pawel-czerwinski-OOFSqPWjCt0-unsplash.jpg"]
+        const randomProfilePic = PROFILE_PIC[Math.floor(Math.random() * PROFILE_PIC.length)];
+        
         const newUsername = new User({
             username:username,
             email:email,
             password:hashedPassword,
+            image: randomProfilePic
         });
-
-        if(newUsername){
-            generateToken(newUsername._id, res)
-            await newUsername.save();
-            res.status(201).json({
-                success: true,
-                message: "User created successfully",
-                user: {
-                    ...newUsername._doc,
-                    password:""
-                }
-            });
-        } else {
-            res.status(500).json({
-                success: false,
-                message: "Failed to create user"
-            });
-        }
-
-
+        
+        generateToken(newUsername._id, res)
+        await newUsername.save();
+        res.status(201).json({
+            success: true,
+            message: "User created successfully",
+            user: {
+                ...newUsername._doc,
+                password:""
+            }
+        })
+        
     } catch (error) {
         console.error(error);
         res.status(500).json({
@@ -141,3 +137,18 @@ export async function logout(req, res) {
         });
     }
 };
+
+export async function authCheck(req, res) {
+    try {
+        res.status(200).json({
+            success: true,
+            user: req.user
+        })
+    } catch (error) {
+        console.log("error in authCheck", error.message);
+        res.status(500).json({
+            success: false,
+            message: "Internal server error"
+        });
+    }
+}

@@ -17,5 +17,16 @@
 
 
 .main {
-    background-color:linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.3)), ;
+    background-color:linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.3));
+}
+
+.loading {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(to right, #2c2c2c 4%, #333 25%, #2c2c2c 36%);
+    background-size: 1000px 100%;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
 }

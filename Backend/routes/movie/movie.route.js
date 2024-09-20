@@ -1,7 +1,7 @@
 import express from "express";
 import { trendingMovie, MovieTrailers, MovieDetails, similarMovies, movieCategory,  } from '../../controller/movies/movie.controller.js'
 
-const router = express.Router();
+const   router = express.Router();
 
 // trending movies
 router.get('/trending', trendingMovie);

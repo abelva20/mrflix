@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom"
+import { Authcontainer } from "./store/AuthUser";
 
 
 function Login() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {login} = Authcontainer();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(username, password)
+    login({email, password})
   }
   return (
     <>
@@ -27,15 +29,15 @@ function Login() {
           </h1>
           <form className='space-y-1 mx-4' onSubmit={handleLogin}>
             <div>
-              <label htmlFor='username' className='text-xl font-semibold block'>
-                Username
+              <label htmlFor='email' className='text-xl font-semibold block'>
+                email
                 <input
-                  type='text'
+                  type='email'
                   className='w-full px-3 py-2 mt-1 mb-2 bg-white/50 rounded-md focus:outline-none focus:ring-blue-600'
-                  placeholder='Enter your Username'
-                  id='username'
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder='Enter your email'
+                  id='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </label>
             </div>

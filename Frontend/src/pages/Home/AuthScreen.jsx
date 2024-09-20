@@ -1,10 +1,14 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { OnPopular } from "../utilities/constant";
+import Popular from "../Component/Authpopular";
+import { contentStore } from "../store/Content";
 
 
 function AuthScreen() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  const { useContent } = contentStore();
 
 
   const handleSubmit = (e) => {
@@ -64,10 +68,11 @@ function AuthScreen() {
     {/* Trending Movies */}
     <main className="flex justify-center items-center bg-gray-800">
       <div className="w-full flex-wrap mt-12 mx-40">
-        <h1 className="text-white text-5xl font-bold text-start mb-8">
-          Trending Now
-        </h1>
-
+      {useContent === "movies" ? (
+          OnPopular.map((category) => <Popular key={category} category={category}/>)
+        ) : (
+          null
+        )}
       </div>
     </main>
     <main className='flex justify-center items-center bg-gray-800'>

@@ -1,14 +1,9 @@
 import { Authcontainer } from "../store/AuthUser";
 import AuthScreen from "./AuthScreen";
-import Home from "./Home"
-
+import Home from "./Home";
 const HomePage = () => {
-    const {user} = Authcontainer;
-  return (
-    <div>
-        {user? <Home /> : <AuthScreen />}
-    </div>
-  )
-}
+	const { user } = Authcontainer();
 
-export default HomePage
+	return <>{user ? < Home/> : <AuthScreen />}</>;
+};
+export default HomePage;

@@ -49,7 +49,9 @@ function Signup() {
             </div>
 
             <div>
-              <label htmlFor='username' className='text-xl font-semibold block'>
+              <label htmlFor='username' className='text-xl
+              
+               block'>
                 Username
                 <input
                   type='text'

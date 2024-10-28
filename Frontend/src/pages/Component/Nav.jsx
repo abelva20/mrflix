@@ -30,7 +30,7 @@ const Nav = () => {
                     <Link to="/" className="hover:underline" onClick={() => setContent("tv")}>
                         tv
                     </Link>
-                    <Link to="/trending" className="hover:underline" onClick={() => setContent("trending")}>
+                    <Link to="/trending" className="hover:underline" onClick={() => setContent("trendings")}>
                         Trending
                     </Link>
                 </div>

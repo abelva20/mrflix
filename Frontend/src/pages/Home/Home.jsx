@@ -7,6 +7,7 @@ import { MovieCategories, original_tmdb_base_url, TvShowCategories } from "../ut
 import { Footer } from "../Component/foot.jsx";
 import { contentStore } from "../store/Content.js";
 import MovieSlider from "../Component/Slide";
+
 const Home = () => {
   const{trendingContent} = getTrending();
   const { useContent } = contentStore();
@@ -69,7 +70,7 @@ const Home = () => {
     <main className='w-full bg-zinc-950'>
       <div className='flex flex-col gap-10 py-10 justify-center'>
         {useContent === "movies" ? (
-          MovieCategories.map((category) => <MovieSlider key={category} category={category}/>)
+          MovieCategories.map((category) => <MovieSlider key={category} category={category} />)
         ) : (
           TvShowCategories.map((category) => <MovieSlider key={category} category={category}/>)
         )}
